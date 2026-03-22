@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon">SP</div>
+        <div>
+          <h1>Study Planner</h1>
+          <p>Focus. Plan. Finish.</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#dashboard" class="nav-link active">
+          <span>🏠</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#subjects" class="nav-link">
+          <span>📚</span>
+          <span>Subjects</span>
+        </a>
+        <a href="#tasks" class="nav-link">
+          <span>✅</span>
+          <span>Tasks</span>
+        </a>
+        <a href="#timetable" class="nav-link">
+          <span>🗓️</span>
+          <span>Timetable</span>
+        </a>
+        <a href="#tools" class="nav-link">
+          <span>⏱️</span>
+          <span>Tools</span>
+        </a>
+        <a href="#notes" class="nav-link">
+          <span>📝</span>
+          <span>Notes</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="theme-toggle" type="button">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">☰</button>
+        <div>
+          <p class="eyebrow">Personal productivity workspace</p>
+          <h2>Study Dashboard</h2>
+        </div>
+      </header>
+
+      <section class="hero-card" id="dashboard">
+        <div>
+          <p class="eyebrow">Welcome back</p>
+          <h3 id="welcomeMessage">Ready for a strong study session?</h3>
+          <p id="todayDate" class="hero-date"></p>
+        </div>
+        <div class="hero-stats">
+          <div class="mini-stat">
+            <span>📌</span>
+            <strong id="subjectCount">0</strong>
+            <small>Subjects</small>
+          </div>
+          <div class="mini-stat">
+            <span>🗂️</span>
+            <strong id="taskCount">0</strong>
+            <small>Tasks</small>
+          </div>
+          <div class="mini-stat">
+            <span>🎯</span>
+            <strong id="completionRate">0%</strong>
+            <small>Completed</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-layout">
+        <article class="card" id="subjects">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Subject manager</p>
+              <h3>Subjects</h3>
+            </div>
+            <span class="card-icon">📘</span>
+          </div>
+          <form id="subjectForm" class="inline-form">
+            <input id="subjectInput" type="text" placeholder="Add a new subject" required>
+            <button type="submit">Add</button>
+          </form>
+          <ul id="subjectList" class="list"></ul>
+        </article>
+
+        <article class="card" id="tasks">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Study tasks</p>
+              <h3>Task Tracker</h3>
+            </div>
+            <span class="card-icon">🧠</span>
+          </div>
+          <form id="taskForm" class="task-form">
+            <input id="taskTitle" type="text" placeholder="Task title" required>
+            <input id="taskDeadline" type="date" required>
+            <select id="taskPriority" required>
+              <option value="">Priority</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            <button type="submit">Add Task</button>
+          </form>
+          <div class="progress-block">
+            <div class="progress-label">
+              <span>Progress</span>
+              <strong id="progressText">0% complete</strong>
+            </div>
+            <div class="progress-track">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+          </div>
+          <ul id="taskList" class="list task-list"></ul>
+        </article>
+
+        <article class="card" id="timetable">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Daily routine</p>
+              <h3>Timetable</h3>
+            </div>
+            <span class="card-icon">⏰</span>
+          </div>
+          <form id="timetableForm" class="inline-form timetable-form">
+            <input id="scheduleHour" type="time" required>
+            <input id="scheduleTask" type="text" placeholder="What will you study?" required>
+            <button type="submit">Save Slot</button>
+          </form>
+          <ul id="timetableList" class="list timetable-list"></ul>
+        </article>
+
+        <article class="card" id="tools">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Exam planning</p>
+              <h3>Countdown Timer</h3>
+            </div>
+            <span class="card-icon">🎓</span>
+          </div>
+          <form id="examForm" class="inline-form">
+            <input id="examName" type="text" placeholder="Exam name" required>
+            <input id="examDate" type="date" required>
+            <button type="submit">Set Exam</button>
+          </form>
+          <div class="countdown-panel">
+            <h4 id="examDisplayName">No exam selected</h4>
+            <p id="countdownText">Add an exam date to see the countdown.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Focus tool</p>
+              <h3>Pomodoro Timer</h3>
+            </div>
+            <span class="card-icon">🍅</span>
+          </div>
+          <div class="pomodoro-panel">
+            <p class="pomodoro-mode" id="pomodoroMode">Study Session</p>
+            <div class="pomodoro-time" id="pomodoroTime">25:00</div>
+            <div class="pomodoro-actions">
+              <button id="startPomodoro" type="button">Start</button>
+              <button id="pausePomodoro" type="button" class="secondary-button">Pause</button>
+              <button id="resetPomodoro" type="button" class="secondary-button">Reset</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card full-width" id="notes">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Quick capture</p>
+              <h3>Notes</h3>
+            </div>
+            <span class="card-icon">✍️</span>
+          </div>
+          <textarea id="notesArea" rows="10" placeholder="Write down revision notes, reminders, or ideas..."></textarea>
+          <div class="notes-footer">
+            <small>Saved automatically in your browser</small>
+            <button id="saveNotes" type="button">Save Notes</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
