@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
 
-Sitemap: https://vipviratprajapat1-source.github.io/Study-Planner/sitemap.xml
