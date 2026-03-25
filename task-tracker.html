@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Tracker for Students - Study Task Manager</title>
+
+  <meta name="description" content="Free task tracker for students. Track homework, assignments, and study tasks online.">
+  <meta name="keywords" content="task tracker for students, study task manager, homework tracker">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Study Task Tracker</h1>
+  <p>Track your homework, assignments and study tasks.</p>
+
+  <div class="card">
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <h2>About Task Tracker</h2>
+  <p>
+    Task tracker helps students manage homework, assignments and study tasks.
+    You can add tasks and track your study progress.
+  </p>
+
+  <a href="index.html">← Back to Study Planner</a>
+
+<script>
+function addTask() {
+  let task = document.getElementById("taskInput").value;
+  if(task === "") return;
+
+  let li = document.createElement("li");
+  li.innerText = task;
+
+  li.onclick = function() {
+    li.style.textDecoration = "line-through";
+  }
+
+  document.getElementById("taskList").appendChild(li);
+  document.getElementById("taskInput").value = "";
+}
+</script>
+
+</body>
+</html>
