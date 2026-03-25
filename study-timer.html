@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Timer Online - Free Study Timer for Students</title>
+
+  <meta name="description" content="Use this free online study timer to track your study time and improve focus. Simple and effective study timer for students.">
+  <meta name="keywords" content="study timer online, study timer, online timer for study, student timer">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Study Timer Online</h1>
+  <p>This free online study timer helps students track study time and stay focused.</p>
+
+  <div class="pomodoro-panel">
+    <div class="pomodoro-time" id="time">00:00</div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+
+  <h2>About Study Timer</h2>
+  <p>
+    Study timer is a simple tool that helps students manage study time,
+    improve focus and increase productivity. You can use this online
+    study timer daily while studying.
+  </p>
+
+  <a href="index.html">← Back to Study Planner</a>
+
+<script>
+let seconds = 0;
+let timer;
+
+function startTimer() {
+  timer = setInterval(function() {
+    seconds++;
+    let min = Math.floor(seconds / 60);
+    let sec = seconds % 60;
+    document.getElementById("time").innerText =
+      (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec;
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(timer);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  seconds = 0;
+  document.getElementById("time").innerText = "00:00";
+}
+</script>
+
+</body>
+</html>
