@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetable Maker Online - Free Study Timetable Maker</title>
+
+  <meta name="description" content="Create your daily study timetable online. Free timetable maker for students to plan study routine.">
+  <meta name="keywords" content="timetable maker online, study timetable maker, daily timetable for students">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Study Timetable Maker</h1>
+  <p>Create your daily study timetable and plan your study routine.</p>
+
+  <div class="card">
+    <input type="time" id="timeInput">
+    <input type="text" id="taskInput" placeholder="What will you study?">
+    <button onclick="addTimetable()">Add</button>
+
+    <ul id="timetableList"></ul>
+  </div>
+
+  <h2>About Timetable Maker</h2>
+  <p>
+    Timetable maker helps students plan daily study routine, manage time,
+    and stay organized. You can create your study timetable online using this tool.
+  </p>
+
+  <a href="index.html">← Back to Study Planner</a>
+
+<script>
+function addTimetable() {
+  let time = document.getElementById("timeInput").value;
+  let task = document.getElementById("taskInput").value;
+
+  if(time === "" || task === "") return;
+
+  let li = document.createElement("li");
+  li.innerText = time + " - " + task;
+
+  document.getElementById("timetableList").appendChild(li);
+
+  document.getElementById("timeInput").value = "";
+  document.getElementById("taskInput").value = "";
+}
+</script>
+
+</body>
+</html>
