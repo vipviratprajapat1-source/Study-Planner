@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer Online - Free Pomodoro Study Timer</title>
+
+  <meta name="description" content="Free Pomodoro Timer online for students. Use 25 minute study timer and 5 minute break timer to improve focus and productivity.">
+  <meta name="keywords" content="pomodoro timer online, pomodoro timer, study timer 25 minutes, focus timer">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Pomodoro Timer Online</h1>
+  <p>Use Pomodoro technique to study with focus. 25 minutes study and 5 minutes break.</p>
+
+  <div class="pomodoro-panel">
+    <div class="pomodoro-time" id="time">25:00</div>
+    <button onclick="startPomodoro()">Start</button>
+    <button onclick="pausePomodoro()">Pause</button>
+    <button onclick="resetPomodoro()">Reset</button>
+  </div>
+
+  <h2>What is Pomodoro Timer?</h2>
+  <p>
+    Pomodoro technique is a time management method where you study for 25 minutes
+    and take a 5 minute break. This method helps students focus better and avoid distractions.
+  </p>
+
+  <a href="index.html">← Back to Study Planner</a>
+
+<script>
+let timeLeft = 1500;
+let timer;
+
+function startPomodoro() {
+  timer = setInterval(function() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    document.getElementById("time").innerText =
+      (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      alert("Pomodoro session completed! Take a break.");
+      timeLeft = 1500;
+    }
+  }, 1000);
+}
+
+function pausePomodoro() {
+  clearInterval(timer);
+}
+
+function resetPomodoro() {
+  clearInterval(timer);
+  timeLeft = 1500;
+  document.getElementById("time").innerText = "25:00";
+}
+</script>
+
+</body>
+</html>
