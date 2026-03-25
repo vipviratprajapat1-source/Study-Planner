@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Countdown Timer - Days Left for Exam</title>
+
+  <meta name="description" content="Free exam countdown timer for students. Check how many days left for your exam and plan your study.">
+  <meta name="keywords" content="exam countdown timer, days left for exam, exam timer for students">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Exam Countdown Timer</h1>
+  <p>Check how many days are left for your exam.</p>
+
+  <div class="card">
+    <input type="text" id="examName" placeholder="Exam Name">
+    <input type="date" id="examDate">
+    <button onclick="setExam()">Set Exam</button>
+
+    <h2 id="examTitle"></h2>
+    <p id="countdown"></p>
+  </div>
+
+  <h2>About Exam Countdown</h2>
+  <p>
+    Exam countdown timer helps students track exam dates and plan study schedule.
+    You can see how many days are left for your exam.
+  </p>
+
+  <a href="index.html">← Back to Study Planner</a>
+
+<script>
+function setExam() {
+  let examName = document.getElementById("examName").value;
+  let examDate = document.getElementById("examDate").value;
+
+  if(examName === "" || examDate === "") return;
+
+  let examTime = new Date(examDate).getTime();
+
+  setInterval(function() {
+    let now = new Date().getTime();
+    let distance = examTime - now;
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("examTitle").innerText = examName;
+    document.getElementById("countdown").innerText = days + " days left";
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
